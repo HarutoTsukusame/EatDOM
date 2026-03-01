@@ -1,0 +1,11 @@
+import { EatDOM } from "./eatdom.js";
+function main() {
+	const c = EatDOM.rootNode(c => {
+		c.e(`p`, c => {
+			c.t(c => `Hello, World!`);
+		});
+	});
+	c.mount(document.getElementById("root"));
+	c.refresh();
+}
+main();
