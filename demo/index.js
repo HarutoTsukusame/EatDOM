@@ -54,6 +54,8 @@ function main() {
 				toolMd2Html(c, v);
 			} else if (v.pageName == "tool-html2eatdom") {
 				toolHtml2Eatdom(c, v);
+			} else if (v.pageName == "tool-base64") {
+				toolBase64(c, v);
 			} else {
 				error404(c, v);
 			}

@@ -6,12 +6,14 @@ export function toolMd2Html(c, v) {
 		});
 		c.t(c => `[${import.meta.url.split("/").splice(-1)}]`);
 	});
-	v.toolMd2Html = {
-		target: {},
-		mdText: "# Hello, World!",
-		htmlText: "",
-	};
-	v.toolMd2Html.htmlText = marked.parse(v.toolMd2Html.mdText);
+	if (!v.toolMd2Html) {
+		v.toolMd2Html = {
+			target: {},
+			mdText: "# Hello, World!",
+			htmlText: "",
+		};
+		v.toolMd2Html.htmlText = marked.parse(v.toolMd2Html.mdText);
+	}
 	c.e(`h2`, c => {
 		c.t(c => `Markdown形式の文字列をHTML形式に変換するツール`);
 	});

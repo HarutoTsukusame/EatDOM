@@ -59,5 +59,13 @@ export function menu(c, v) {
 				c.t(c => `ツール：HTML to EatDOM`);
 			});
 		});
+		c.e(`a`, c => {
+			c.a(`href`, c => {
+				c.t(c => `?tool-base64`);
+			});
+			c.e(`li`, c => {
+				c.t(c => `ツール：Base64エンコーダ/デコーダ`);
+			});
+		});
 	});
 }
