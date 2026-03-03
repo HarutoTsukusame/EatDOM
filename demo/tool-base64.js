@@ -23,6 +23,7 @@ export function toolBase64(c, v) {
 			c.t(c => `Base64形式ではない文字列：`);
 		});
 		c.e(`textarea`, c => {
+			v.toolBase64.target.decoded = c;
 			c.a(`id`, c => {
 				c.t(c => `decoded`);
 			});
@@ -57,10 +58,9 @@ export function toolBase64(c, v) {
 				node.addEventListener("input", event => {
 					v.toolBase64.encodedText = event.target.value;
 					v.toolBase64.decodedText = btoa(v.toolBase64.encodedText);
-					v.toolBase64.target.decodedText.refresh();
+					v.toolBase64.target.decoded.refresh();
 				});
 			});
 		});
 	});
-
 }
