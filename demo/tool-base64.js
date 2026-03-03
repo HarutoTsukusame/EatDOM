@@ -35,7 +35,7 @@ export function toolBase64(c, v) {
 				node.addEventListener("input", event => {
 					v.toolBase64.decodedText = event.target.value;
 					v.toolBase64.encodedText = btoa(v.toolBase64.decodedText);
-					v.toolBase64.target.html.refresh();
+					v.toolBase64.target.encoded.refresh();
 				});
 			});
 		});
@@ -54,13 +54,13 @@ export function toolBase64(c, v) {
 				c.t(c => `tool-base64 `);
 			});
 			c.t(c => v.toolBase64.encodedText);
-			c.setPostRenderHook(node => {
-				node.addEventListener("input", event => {
-					v.toolBase64.encodedText = event.target.value;
-					v.toolBase64.decodedText = atob(v.toolBase64.encodedText);
-					v.toolBase64.target.decoded.refresh();
-				});
-			});
+			// c.setPostRenderHook(node => {
+			// 	node.addEventListener("input", event => {
+			// 		v.toolBase64.encodedText = event.target.value;
+			// 		v.toolBase64.decodedText = atob(v.toolBase64.encodedText);
+			// 		v.toolBase64.target.decoded.refresh();
+			// 	});
+			// });
 		});
 	});
 }
