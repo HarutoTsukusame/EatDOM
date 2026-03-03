@@ -6,6 +6,7 @@ import { lifeGame } from "./demo-lifegame.js";
 import { reference } from "./reference.js";
 import { toolMd2Html } from "./tool-md2html.js";
 import { toolHtml2Eatdom } from "./tool-html2eatdom.js";
+import { toolBase64 } from "./tool-base64.js";
 import { update } from "./update.js";
 import { error404 } from "./404.js";
 
