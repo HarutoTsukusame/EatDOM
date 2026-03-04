@@ -34,7 +34,7 @@ export function toolBase64(c, v) {
 			c.setPostRenderHook(node => {
 				node.addEventListener("input", event => {
 					v.toolBase64.decodedText = event.target.value;
-					v.toolBase64.encodedText = atob(v.toolBase64.decodedText);
+					v.toolBase64.encodedText = btoa(v.toolBase64.decodedText);
 					v.toolBase64.target.encoded.refresh();
 				});
 			});
@@ -57,7 +57,7 @@ export function toolBase64(c, v) {
 			// c.setPostRenderHook(node => {
 			// 	node.addEventListener("input", event => {
 			// 		v.toolBase64.encodedText = event.target.value;
-			// 		v.toolBase64.decodedText = btoa(v.toolBase64.encodedText);
+			// 		v.toolBase64.decodedText = atob(v.toolBase64.encodedText);
 			// 		v.toolBase64.target.decoded.refresh();
 			// 	});
 			// });
