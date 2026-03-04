@@ -54,13 +54,13 @@ export function toolBase64(c, v) {
 				c.t(c => `tool-base64 `);
 			});
 			c.t(c => v.toolBase64.encodedText);
-			// c.setPostRenderHook(node => {
-			// 	node.addEventListener("input", event => {
-			// 		v.toolBase64.encodedText = event.target.value;
-			// 		v.toolBase64.decodedText = atob(v.toolBase64.encodedText);
-			// 		v.toolBase64.target.decoded.refresh();
-			// 	});
-			// });
+			c.setPostRenderHook(node => {
+				node.addEventListener("input", event => {
+					v.toolBase64.encodedText = event.target.value;
+					v.toolBase64.decodedText = atob(v.toolBase64.encodedText);
+					v.toolBase64.target.decoded.refresh();
+				});
+			});
 		});
 	});
 }
