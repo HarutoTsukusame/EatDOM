@@ -33,8 +33,13 @@ export function toolBase64(c, v) {
 			c.t(c => v.toolBase64.decodedText);
 			c.setPostRenderHook(node => {
 				node.addEventListener("input", event => {
-					v.toolBase64.decodedText = event.target.value;
-					v.toolBase64.encodedText = btoa(v.toolBase64.decodedText);
+					try {
+						const bytes = new TextEncoder().encode(event.target.value);
+						const binary = String.fromCharCode(...bytes);
+						v.toolBase64.encodedText = btoa(binary);
+					} catch (e) {
+						v.toolBase64.encodedText = "";
+					}
 					v.toolBase64.target.encoded.refresh();
 				});
 			});
@@ -56,8 +61,13 @@ export function toolBase64(c, v) {
 			c.t(c => v.toolBase64.encodedText);
 			c.setPostRenderHook(node => {
 				node.addEventListener("input", event => {
-					v.toolBase64.encodedText = event.target.value;
-					v.toolBase64.decodedText = atob(v.toolBase64.encodedText);
+					try {
+						const binary = atob(event.target.value);
+						const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+						v.toolBase64.decodedText = new TextDecoder().decode(bytes);
+					} catch (e) {
+						v.toolBase64.decodedText = "";
+					}
 					v.toolBase64.target.decoded.refresh();
 				});
 			});
