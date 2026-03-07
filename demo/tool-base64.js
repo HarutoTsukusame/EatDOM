@@ -9,7 +9,6 @@ export function toolBase64(c, v) {
 		v.toolBase64 = {
 			target: {},
 			decodedText: "",
-			encodedText: "",
 		};
 	}
 	if (!v.base64Text) {
