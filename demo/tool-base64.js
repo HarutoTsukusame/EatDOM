@@ -37,7 +37,8 @@ export function toolBase64(c, v) {
 			c.setPostRenderHook(node => {
 				node.addEventListener("input", event => {
 					try {
-						const bytes = new TextEncoder().encode(event.target.value);
+						v.toolBase64.decodedText = event.target.value;
+						const bytes = new TextEncoder().encode(v.toolBase64.decodedText);
 						const binary = String.fromCharCode(...bytes);
 						v.base64Text = btoa(binary);
 					} catch (e) {
@@ -65,6 +66,7 @@ export function toolBase64(c, v) {
 			c.setPostRenderHook(node => {
 				node.addEventListener("input", event => {
 					try {
+						v.base64Text = event.target.value;
 						const binary = atob(event.target.value);
 						const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
 						v.toolBase64.decodedText = new TextDecoder().decode(bytes);
