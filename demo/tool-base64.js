@@ -12,6 +12,9 @@ export function toolBase64(c, v) {
 			encodedText: "",
 		};
 	}
+	if (!v.base64Text) {
+		v.base64Text = "";
+	}
 	c.e(`h2`, c => {
 		c.t(c => `Base64形式の文字列に変換（エンコード）したりBase64形式の文字列を元に戻（デコード）したりするツール`);
 	});
@@ -36,9 +39,9 @@ export function toolBase64(c, v) {
 					try {
 						const bytes = new TextEncoder().encode(event.target.value);
 						const binary = String.fromCharCode(...bytes);
-						v.toolBase64.encodedText = btoa(binary);
+						v.base64Text = btoa(binary);
 					} catch (e) {
-						v.toolBase64.encodedText = "";
+						v.base64Text = "";
 					}
 					v.toolBase64.target.encoded.refresh();
 				});
@@ -58,7 +61,7 @@ export function toolBase64(c, v) {
 			c.a(`class`, c => {
 				c.t(c => `tool-base64 `);
 			});
-			c.t(c => v.toolBase64.encodedText);
+			c.t(c => v.base64Text);
 			c.setPostRenderHook(node => {
 				node.addEventListener("input", event => {
 					try {
