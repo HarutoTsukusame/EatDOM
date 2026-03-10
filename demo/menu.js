@@ -64,5 +64,13 @@ export function menu(c, v) {
 				c.t(c => `ツール：Base64エンコーダ/デコーダ`);
 			});
 		});
+		c.e(`a`, c => {
+			c.a(`href`, c => {
+				c.t(c => `?tool-url-encode`);
+			});
+			c.e(`li`, c => {
+				c.t(c => `ツール：URLエンコーダ/デコーダ`);
+			});
+		});
 	});
 }
