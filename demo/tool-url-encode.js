@@ -2,45 +2,43 @@ import { generateSourceLink } from "./utility-generate-source-link";
 
 export function toolUrlEncode(c, v) {
 	generateSourceLink(c, import.meta.url);
-	if (!v.toolBase64) {
-		v.toolBase64 = {
+	if (!v.toolUrlEncode) {
+		v.toolUrlEncode = {
 			target: {},
 			decodedText: "",
 		};
 	}
-	if (!v.base64Text) {
-		v.base64Text = "";
+	if (!v.urlEncodedText) {
+		v.urlEncodedText = "";
 	}
 	c.e(`h2`, c => {
-		c.t(c => `Base64形式の文字列に変換（エンコード）したりBase64形式の文字列を元に戻（デコード）したりするツール`);
+		c.t(c => `URLエンコードしたりデコードしたりするツール`);
 	});
 	c.e(`form`, c => {
 		c.e(`label`, c => {
 			c.a(`for`, c => {
 				c.t(c => `decoded`);
 			});
-			c.t(c => `Base64形式ではない文字列：`);
+			c.t(c => `URLエンコードされていない文字列：`);
 		});
 		c.e(`textarea`, c => {
-			v.toolBase64.target.decoded = c;
+			v.toolUrlEncode.target.decoded = c;
 			c.a(`id`, c => {
 				c.t(c => `decoded`);
 			});
 			c.a(`class`, c => {
-				c.t(c => `tool-base64 `);
+				c.t(c => `multi-line-stretch `);
 			});
-			c.t(c => v.toolBase64.decodedText);
+			c.t(c => v.toolUrlEncode.decodedText);
 			c.setPostRenderHook(node => {
 				node.addEventListener("input", event => {
 					try {
-						v.toolBase64.decodedText = event.target.value;
-						const bytes = new TextEncoder().encode(v.toolBase64.decodedText);
-						const binary = String.fromCharCode(...bytes);
-						v.base64Text = btoa(binary);
+						v.toolUrlEncode.decodedText = event.target.value;
+						v.urlEncodedText = encodeURIComponent(binary);
 					} catch (e) {
-						v.base64Text = "";
+						v.urlEncodedText = "";
 					}
-					v.toolBase64.target.encoded.refresh();
+					v.toolUrlEncode.target.encoded.refresh();
 				});
 			});
 		});
@@ -51,12 +49,12 @@ export function toolUrlEncode(c, v) {
 			c.t(c => `Base64形式の文字列：`);
 		});
 		c.e(`textarea`, c => {
-			v.toolBase64.target.encoded = c;
+			v.toolUrlEncode.target.encoded = c;
 			c.a(`id`, c => {
 				c.t(c => `encoded`);
 			});
 			c.a(`class`, c => {
-				c.t(c => `tool-base64 `);
+				c.t(c => `multi-line-stretch `);
 			});
 			c.t(c => v.base64Text);
 			c.setPostRenderHook(node => {
@@ -65,11 +63,11 @@ export function toolUrlEncode(c, v) {
 						v.base64Text = event.target.value;
 						const binary = atob(event.target.value);
 						const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
-						v.toolBase64.decodedText = new TextDecoder().decode(bytes);
+						v.toolUrlEncode.decodedText = new TextDecoder().decode(bytes);
 					} catch (e) {
-						v.toolBase64.decodedText = "";
+						v.toolUrlEncode.decodedText = "";
 					}
-					v.toolBase64.target.decoded.refresh();
+					v.toolUrlEncode.target.decoded.refresh();
 				});
 			});
 		});
