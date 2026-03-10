@@ -9,7 +9,7 @@ import { toolHtml2Eatdom } from "./tool-html2eatdom.js";
 import { toolBase64 } from "./tool-base64.js";
 import { update } from "./update.js";
 import { error404 } from "./404.js";
-import { generateSourceLink } from "./utility-generate-source-link";
+import { generateSourceLink } from "./utility-generate-source-link.js";
 import { toolUrlEncode } from "./tool-url-encode.js";
 
 function main() {

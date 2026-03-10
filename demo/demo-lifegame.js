@@ -1,4 +1,4 @@
-import { generateSourceLink } from "./utility-generate-source-link";
+import { generateSourceLink } from "./utility-generate-source-link.js";
 
 // demo-lifegame.js
 export function lifeGame(c, v) {

@@ -1,5 +1,5 @@
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
-import { generateSourceLink } from "./utility-generate-source-link";
+import { generateSourceLink } from "./utility-generate-source-link.js";
 
 export function toolMd2Html(c, v) {
 	generateSourceLink(c, import.meta.url);

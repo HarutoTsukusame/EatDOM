@@ -1,4 +1,4 @@
-import { generateSourceLink } from "./utility-generate-source-link";
+import { generateSourceLink } from "./utility-generate-source-link.js";
 
 export function toolUrlEncode(c, v) {
 	generateSourceLink(c, import.meta.url);

@@ -1,4 +1,4 @@
-import { generateSourceLink } from "./utility-generate-source-link";
+import { generateSourceLink } from "./utility-generate-source-link.js";
 
 const VOID_ELEMENTS = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr']);
 

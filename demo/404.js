@@ -1,4 +1,4 @@
-import { generateSourceLink } from "./utility-generate-source-link";
+import { generateSourceLink } from "./utility-generate-source-link.js";
 
 export function error404(c, v) {
 	generateSourceLink(c, import.meta.url);
