@@ -10,6 +10,7 @@ import { toolBase64 } from "./tool-base64.js";
 import { update } from "./update.js";
 import { error404 } from "./404.js";
 import { generateSourceLink } from "./utility-generate-source-link";
+import { toolUrlEncode } from "./tool-url-encode.js";
 
 function main() {
 
@@ -53,6 +54,8 @@ function main() {
 				toolHtml2Eatdom(c, v);
 			} else if (v.pageName == "tool-base64") {
 				toolBase64(c, v);
+			} else if (v.pageName == "tool-url-encode") {
+				toolUrlEncode(c, v);
 			} else {
 				error404(c, v);
 			}
