@@ -1,11 +1,8 @@
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+import { generateSourceLink } from "./utility-generate-source-link";
+
 export function toolMd2Html(c, v) {
-	c.e(`a`, c => {
-		c.a(`href`, c => {
-			c.t(c => import.meta.url);
-		});
-		c.t(c => `[${import.meta.url.split("/").splice(-1)}]`);
-	});
+	generateSourceLink(c, import.meta.url);
 	if (!v.toolMd2Html) {
 		v.toolMd2Html = {
 			target: {},

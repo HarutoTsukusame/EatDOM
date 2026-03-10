@@ -9,6 +9,7 @@ import { toolHtml2Eatdom } from "./tool-html2eatdom.js";
 import { toolBase64 } from "./tool-base64.js";
 import { update } from "./update.js";
 import { error404 } from "./404.js";
+import { generateSourceLink } from "./utility-generate-source-link";
 
 function main() {
 
@@ -27,12 +28,7 @@ function main() {
 	setupSpaHandler(v);
 
 	const c = EatDOM.rootNode(c => {
-		c.e(`a`, c => {
-			c.a(`href`, c => {
-				c.t(c => import.meta.url);
-			});
-			c.t(c => `[${import.meta.url.split("/").splice(-1)}]`);
-		});
+		generateSourceLink(c, import.meta.url);
 		c.a(`id`, c => {
 			c.t(c => `root`);
 		});

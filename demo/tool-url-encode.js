@@ -1,6 +1,6 @@
 import { generateSourceLink } from "./utility-generate-source-link";
 
-export function toolBase64(c, v) {
+export function toolUrlEncode(c, v) {
 	generateSourceLink(c, import.meta.url);
 	if (!v.toolBase64) {
 		v.toolBase64 = {

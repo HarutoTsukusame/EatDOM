@@ -1,10 +1,7 @@
+import { generateSourceLink } from "./utility-generate-source-link";
+
 export function update(c, v) {
-	c.e(`a`, c => {
-		c.a(`href`, c => {
-			c.t(c => import.meta.url);
-		});
-		c.t(c => `[${import.meta.url.split("/").splice(-1)}]`);
-	});
+	generateSourceLink(c, import.meta.url);
 	c.e(`dl`, c => {
 		c.e(`dt`, c => {
 			c.t(c => `2026/01/28`);

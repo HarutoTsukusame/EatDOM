@@ -1,12 +1,8 @@
 import { update } from "./update.js";
+import { generateSourceLink } from "./utility-generate-source-link.js";
 
 export function top(c, v) {
-	c.e(`a`, c => {
-		c.a(`href`, c => {
-			c.t(c => import.meta.url);
-		});
-		c.t(c => `[${import.meta.url.split("/").splice(-1)}]`);
-	});
+	generateSourceLink(c, import.meta.url);
 	c.e(`h1`, c => {
 		c.t(c => `EatDOM`);
 	});

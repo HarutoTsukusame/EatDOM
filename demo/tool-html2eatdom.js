@@ -1,12 +1,9 @@
+import { generateSourceLink } from "./utility-generate-source-link";
+
 const VOID_ELEMENTS = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr']);
 
 export function toolHtml2Eatdom(c, v) {
-	c.e(`a`, c => {
-		c.a(`href`, c => {
-			c.t(c => import.meta.url);
-		});
-		c.t(c => `[${import.meta.url.split("/").splice(-1)}]`);
-	});
+	generateSourceLink(c, import.meta.url);
 	function html2Eatdom(htmlText) {
 		let temp = htmlText;
 		temp = temp.replace(/>(.*?)</gs, (match, textNode) => {
