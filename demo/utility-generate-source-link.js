@@ -1,5 +1,4 @@
 export function generateSourceLink(c, url) {
-	const url = url;
 	c.e(`a`, c => {
 		c.a(`href`, c => {
 			c.t(c => url);
