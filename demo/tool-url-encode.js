@@ -56,7 +56,7 @@ export function toolUrlEncode(c, v) {
 			c.a(`class`, c => {
 				c.t(c => `multi-line-stretch `);
 			});
-			c.t(c => v.base64Text);
+			c.t(c => v.urlEncodedText);
 			c.setPostRenderHook(node => {
 				node.addEventListener("input", event => {
 					try {
