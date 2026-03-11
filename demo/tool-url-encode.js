@@ -34,7 +34,7 @@ export function toolUrlEncode(c, v) {
 				node.addEventListener("input", event => {
 					try {
 						v.toolUrlEncode.decodedText = event.target.value;
-						v.urlEncodedText = encodeURIComponent(binary);
+						v.urlEncodedText = encodeURIComponent(v.toolUrlEncode.decodedText);
 					} catch (e) {
 						v.urlEncodedText = "";
 					}
@@ -46,7 +46,7 @@ export function toolUrlEncode(c, v) {
 			c.a(`for`, c => {
 				c.t(c => `encoded`);
 			});
-			c.t(c => `Base64形式の文字列：`);
+			c.t(c => `URLエンコードされた文字列：`);
 		});
 		c.e(`textarea`, c => {
 			v.toolUrlEncode.target.encoded = c;
@@ -60,10 +60,8 @@ export function toolUrlEncode(c, v) {
 			c.setPostRenderHook(node => {
 				node.addEventListener("input", event => {
 					try {
-						v.base64Text = event.target.value;
-						const binary = atob(event.target.value);
-						const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
-						v.toolUrlEncode.decodedText = new TextDecoder().decode(bytes);
+						v.urlEncodedText = event.target.value;
+						v.toolUrlEncode.decodedText = decodeURIComponent(v.urlEncodedText);
 					} catch (e) {
 						v.toolUrlEncode.decodedText = "";
 					}
