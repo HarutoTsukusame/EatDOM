@@ -2,16 +2,16 @@ import { generateSourceLink } from "./utility-generate-source-link.js";
 
 export function toolHtmlEscape(c, v) {
 	const escapeChars = {
+		"&": "&amp;",
 		"<": "&lt;",
 		">": "&gt;",
-		"&": "&amp;",
 		"\"": "&quot;",
 		"'": "&#39;",
 	};
 	const unescapeChars = {
+		"&amp;": "&",
 		"&lt;": "<",
 		"&gt;": ">",
-		"&amp;": "&",
 		"&quot;": "\"",
 		"&#39;": "'",
 	};
