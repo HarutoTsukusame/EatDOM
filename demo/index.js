@@ -11,6 +11,7 @@ import { update } from "./update.js";
 import { error404 } from "./404.js";
 import { generateSourceLink } from "./utility-generate-source-link.js";
 import { toolUrlEncode } from "./tool-url-encode.js";
+import { toolHtmlEscape } from "./tool-html-escape.js";
 
 function main() {
 
@@ -56,6 +57,8 @@ function main() {
 				toolBase64(c, v);
 			} else if (v.pageName == "tool-url-encode") {
 				toolUrlEncode(c, v);
+			} else if (v.pageName == "tool-html-escape") {
+				toolHtmlEscape(c, v);
 			} else {
 				error404(c, v);
 			}

@@ -72,5 +72,13 @@ export function menu(c, v) {
 				c.t(c => `ツール：URLエンコーダ/デコーダ`);
 			});
 		});
+		c.e(`a`, c => {
+			c.a(`href`, c => {
+				c.t(c => `?tool-html-escape`);
+			});
+			c.e(`li`, c => {
+				c.t(c => `ツール：HTMLエスケープ/アンエスケープ`);
+			});
+		});
 	});
 }
