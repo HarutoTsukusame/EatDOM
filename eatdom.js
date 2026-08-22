@@ -2,11 +2,27 @@ export function eatdomPrimeElement(c, n, f) { f(c.appendChild(document.createEle
 export function eatdomPrimeAttribute(c, n, v) { c.setAttribute(n, v); }
 export function eatdomPrimeText(c, t) { c.appendChild(document.createTextNode(t)); }
 
+export function eatdomPrimeElementNS(c, nsURI, n, f) {
+	if (nsURI) {
+		f(c.appendChild(document.createElementNS(nsURI, n)));
+	} else {
+		eatdomPrimeElement(c, n, f);
+	}
+}
+export function eatdomPrimeAttributeNS(c, nsURI, n, v) {
+	if (nsURI) {
+		c.setAttributeNS(nsURI, n, v);
+	} else {
+		eatdomPrimeAttribute(c, n, v);
+	}
+}
+
 export class EatDOM {
 	static VOID_ELEMENTS = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr']);
 
-	constructor(name) {
+	constructor(name, nsURI = null) {
 		this.name = name;
+		this.nsURI = nsURI;
 		this.attributes = []; // EatDOMインスタンスの配列
 		this.elements = [];   // EatDOMインスタンス と string の混在配列
 		this.callback = null;  // 再生成用コールバック
@@ -26,8 +42,19 @@ export class EatDOM {
 		this.elements.push(c);
 		f(c);
 	}
+	eNS(nsURI, name, f) {
+		const c = new EatDOM(name, nsURI);
+		c.callback = () => f(c);
+		this.elements.push(c);
+		f(c);
+	}
 	a(name, f) {
 		const c = new EatDOM(name);
+		this.attributes.push(c);
+		f(c);
+	}
+	aNS(nsURI, name, f) {
+		const c = new EatDOM(name, nsURI);
 		this.attributes.push(c);
 		f(c);
 	}
@@ -53,7 +80,7 @@ export class EatDOM {
 	refreshRealNode() {
 		if (this.node) {
 			// 物理的な入れ替え先を用意（名前を引き継ぐ）
-			const node = document.createElement(this.node.nodeName);
+			const node = document.createElementNS(this.node.namespaceURI, this.node.nodeName);
 			// renderNode時に古いノードへの参照が上書きされるためoldNodeに参照を保存
 			const oldNode = this.node;
 
@@ -69,9 +96,10 @@ export class EatDOM {
 
 		// 1. 属性の生成
 		this.attributes.forEach(attr => {
+			const nsURI = attr.nsURI;
 			const key = attr.name;
 			const value = attr.extractTextContents();
-			eatdomPrimeAttribute(node, key, value);
+			eatdomPrimeAttributeNS(node, nsURI, key, value);
 		});
 
 		this.preRenderHook(node);
@@ -80,7 +108,7 @@ export class EatDOM {
 		this.elements.forEach(item => {
 			if (item instanceof EatDOM) {
 				// e を使い、生成された物理ノードを子の render に渡す
-				eatdomPrimeElement(node, item.name, c => {
+				eatdomPrimeElementNS(node, item.nsURI, item.name, c => {
 					item.renderNode(c);
 				});
 			} else {
