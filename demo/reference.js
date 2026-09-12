@@ -53,7 +53,7 @@ export function reference(c, v) {
 		});
 
 		codeBlock(c, [
-			`const root = EatDOM.rootNode(c => {`,
+			`const root = EatDOM.rootNode("div", c => {`,
 			`	c.e('div', c => {`,
 			`		c.a('class', c => c.t(c => 'hello'));`,
 			`		c.t(c => 'Hello EatDOM');`,
@@ -218,7 +218,7 @@ export function reference(c, v) {
 				c.a(`id`, c => {
 					c.t(c => `rootNode`);
 				});
-				c.t(c => `EatDOM.rootNode(builder)`);
+				c.t(c => `EatDOM.rootNode(name, builder)`);
 			});
 
 			c.e(`p`, c => {
@@ -241,7 +241,7 @@ export function reference(c, v) {
 			});
 
 			codeBlock(c, [
-				`const root = EatDOM.rootNode(c => {`,
+				`const root = EatDOM.rootNode("div", c => {`,
 				`	c.e('div', c => {`,
 				`		c.t(c => 'Hello');`,
 				`	});`,

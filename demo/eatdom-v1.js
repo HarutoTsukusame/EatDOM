@@ -30,14 +30,8 @@ export class EatDOM {
 		this.postRenderHook = () => { };
 		this.node = null;
 	}
-	static rootNode(name, f) {
-		const c = new EatDOM(name);
-		c.callback = () => f(c);
-		f(c);
-		return c;
-	}
-	static rootNodeNS(nsURI, name, f) {
-		const c = new EatDOM(name, nsURI);
+	static rootNode(f) {
+		const c = new EatDOM("#Fragment");
 		c.callback = () => f(c);
 		f(c);
 		return c;
@@ -86,9 +80,7 @@ export class EatDOM {
 	refreshRealNode() {
 		if (this.node) {
 			// 物理的な入れ替え先を用意（名前を引き継ぐ）
-			const node = this.nsURI
-				? document.createElementNS(this.nsURI, this.name)
-				: document.createElement(this.name);
+			const node = document.createElementNS(this.node.namespaceURI, this.node.nodeName);
 			// renderNode時に古いノードへの参照が上書きされるためoldNodeに参照を保存
 			const oldNode = this.node;
 

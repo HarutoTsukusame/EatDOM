@@ -3,7 +3,7 @@ function main() {
 	const v = {};
 	v.response = "（まだ何も入力されていません）";
 
-	const c = EatDOM.rootNode(c => {
+	const c = EatDOM.rootNode("div", c => {
 		c.a(`id`, c => {
 			c.t(c => `root`);
 		});

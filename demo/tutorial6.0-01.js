@@ -55,7 +55,7 @@ function main() {
 	const url = new URL(location.href);
 	v.pageName = url.searchParams.get("page-name");
 
-	const c = EatDOM.rootNode(c => {
+	const c = EatDOM.rootNode("div", c => {
 		c.a(`id`, c => {
 			c.t(c => `root`);
 		});

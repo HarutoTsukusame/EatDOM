@@ -6,7 +6,7 @@ function main() {
 
 	const pageNames = ["トップページ", "チュートリアル", "リファレンス"];
 
-	const c = EatDOM.rootNode(c => {
+	const c = EatDOM.rootNode("div", c => {
 		c.a(`id`, c => {
 			c.t(c => `root`);
 		});

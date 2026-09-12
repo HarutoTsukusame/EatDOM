@@ -14,7 +14,7 @@ DOMを部品化して使い回したり、構築したDOMを部分的に更新�
 ```javascript
 import { EatDOM } from "./eatdom.js";
 
-const c = EatDOM.rootNode(c => {
+const c = EatDOM.rootNode("div", c => {
     c.e("h1", c => {
         c.t(c => "Hello, EatDOM World!");
     });

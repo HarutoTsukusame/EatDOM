@@ -12,7 +12,7 @@ function main() {
 	v.target = {};
 	v.resources = {};
 
-	const c = EatDOM.rootNode(c => {
+	const c = EatDOM.rootNode("body", c => {
 		c.e(`script`, c => {
 			c.a(`src`, c => {
 				c.t(c => v.pageName);

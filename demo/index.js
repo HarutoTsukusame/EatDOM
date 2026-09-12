@@ -29,7 +29,7 @@ function main() {
 
 	setupSpaHandler(v);
 
-	const c = EatDOM.rootNode(c => {
+	const c = EatDOM.rootNode("div", c => {
 		generateSourceLink(c, import.meta.url);
 		c.a(`id`, c => {
 			c.t(c => `root`);

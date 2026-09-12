@@ -4,7 +4,7 @@ import { EatDOM } from "./eatdom.js";
 function main() {
 	console.log("tutorial1.0-01.js");
 	// ルートノードの生成
-	const c = EatDOM.rootNode(c => {
+	const c = EatDOM.rootNode("div", c => {
 		// ここにEatDOMツリーを構築
 	});
 	// ルートノードを#rootにマウント

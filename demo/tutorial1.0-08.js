@@ -1,6 +1,6 @@
 import { EatDOM } from "./eatdom.js";
 function main() {
-	const c = EatDOM.rootNode(c => {
+	const c = EatDOM.rootNode("div", c => {
 		c.e(`h1`, c => {
 			c.t(c => `EatDOM`);
 		});

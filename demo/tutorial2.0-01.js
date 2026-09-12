@@ -3,7 +3,7 @@ function main() {
 	const v = {};
 	v.value = 1;
 
-	const c = EatDOM.rootNode(c => {
+	const c = EatDOM.rootNode("div", c => {
 		c.a(`id`, c => {
 			c.t(c => `root`);
 		});
